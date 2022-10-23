@@ -15,6 +15,7 @@ public interface SalesService {
     Sales getSaleById(Long saleId);
     Sales getSaleByStatus(Status status);
     void createSale(Sales sale);
+    Sales updateStatusSales(Long saleId,Sales request);
     ResponseEntity<?> deleteSale(Long saleId);
 
 }

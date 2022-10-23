@@ -1,5 +1,6 @@
 package com.example.crm.backend.domain.activityAggregate.model.entity;
 
+import com.example.crm.backend.domain.salesAggregate.model.entity.Sales;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,5 +33,9 @@ public class Task {
 
     @Size(max = 100)
     private String description;
+
+    @ManyToOne(targetEntity = Sales.class)
+    @JoinColumn(name = "salesid")
+    private Sales sales;
 
 }

@@ -1,5 +1,6 @@
 package com.example.crm.backend.domain.salesAggregate.model.entity;
 
+import com.example.crm.backend.domain.activityAggregate.model.entity.Task;
 import com.example.crm.backend.domain.userAggregate.model.entity.Rol;
 import com.example.crm.backend.domain.userAggregate.model.entity.User;
 import lombok.*;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -45,6 +47,10 @@ public class Sales {
     @NotNull
     @NotBlank
     private String amount;
+
+    @OneToMany(targetEntity = Task.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "salesid",referencedColumnName = "id")
+    private List<Task> tasks;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "sales_status",

@@ -1,5 +1,6 @@
 package com.example.crm.backend.domain.salesAggregate.model.entity;
 
+import com.example.crm.backend.domain.activityAggregate.model.entity.Task;
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Getter
 @Setter
@@ -47,4 +49,8 @@ public class Customer {
     @NotBlank
     @Size(max = 15)
     private String rut;
+
+    @OneToMany(targetEntity = Sales.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "customerid",referencedColumnName = "id")
+    private List<Sales> sales;
 }

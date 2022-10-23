@@ -1,5 +1,6 @@
 package com.example.crm.backend.domain.userAggregate.model.entity;
 
+import com.example.crm.backend.domain.salesAggregate.model.entity.Sales;
 import lombok.*;
 
 import javax.persistence.*;
@@ -55,6 +56,10 @@ public class User {
     @NotNull
     @NotBlank
     private String password;
+
+    @OneToMany(targetEntity = Sales.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "userid",referencedColumnName = "id")
+    private List<Sales> sales;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
