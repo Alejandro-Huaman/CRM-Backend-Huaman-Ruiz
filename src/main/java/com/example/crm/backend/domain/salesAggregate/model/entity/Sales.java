@@ -41,7 +41,7 @@ public class Sales {
     @JoinColumn(name = "customerid")
     private Customer customer;
 
-    @Temporal(TemporalType.DATE)
+    @NotNull
     private Date finishdate;
 
     @NotNull

@@ -27,7 +27,7 @@ public class Task {
     @Size(max = 30)
     private String title;
 
-    @Temporal(TemporalType.DATE)
+    @NotNull
     private Date date;
 
     @Size(max = 100)

@@ -3,11 +3,13 @@ package com.example.crm.backend.service;
 import com.example.crm.backend.domain.salesAggregate.model.entity.Customer;
 import com.example.crm.backend.domain.salesAggregate.model.entity.Sales;
 import com.example.crm.backend.domain.salesAggregate.model.entity.Status;
+import com.example.crm.backend.domain.salesAggregate.model.enumeration.StatusName;
 import com.example.crm.backend.domain.salesAggregate.persistence.CustomerRepository;
 import com.example.crm.backend.domain.salesAggregate.persistence.SalesRepository;
 import com.example.crm.backend.domain.salesAggregate.persistence.StatusRepository;
 import com.example.crm.backend.domain.salesAggregate.service.SalesService;
 import com.example.crm.backend.domain.userAggregate.model.entity.Rol;
+import com.example.crm.backend.domain.userAggregate.model.enumeration.RolName;
 import com.example.crm.backend.domain.userAggregate.persistence.UserRepository;
 import com.example.crm.shared.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,8 +84,12 @@ public class SalesServiceImpl implements SalesService {
 
         return userRepository.findById(userId)
                 .map(users -> {
+                    Set<Status> status = new HashSet<>();
+                    status.add(statusRepository.findByStatusname(StatusName.Qualification).get());
                     sale.setUser(users);
                     sale.setCustomer(customer);
+                    sale.setStatus(status);
+                    sale.setStatusName(StatusName.Qualification);
                     return salesRepository.save(sale);
                 })
                 .orElseThrow(() -> new ResourceNotFoundException(ENTITY3, userId));
