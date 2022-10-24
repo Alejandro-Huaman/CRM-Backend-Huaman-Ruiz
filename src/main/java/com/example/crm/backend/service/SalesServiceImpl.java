@@ -7,6 +7,7 @@ import com.example.crm.backend.domain.salesAggregate.persistence.CustomerReposit
 import com.example.crm.backend.domain.salesAggregate.persistence.SalesRepository;
 import com.example.crm.backend.domain.salesAggregate.persistence.StatusRepository;
 import com.example.crm.backend.domain.salesAggregate.service.SalesService;
+import com.example.crm.backend.domain.userAggregate.model.entity.Rol;
 import com.example.crm.backend.domain.userAggregate.persistence.UserRepository;
 import com.example.crm.shared.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class SalesServiceImpl implements SalesService {
@@ -93,7 +92,10 @@ public class SalesServiceImpl implements SalesService {
     @Override
     public Sales updateStatusSales(Long saleId, Sales request) {
         return salesRepository.findById(saleId).map(post->{
-            post.setStatus(request.getStatus());
+            Set<Status> status = new HashSet<>();
+            status.add(statusRepository.findByStatusname(request.getStatusName()).get());
+            post.setStatus(status);
+            post.setStatusName(request.getStatusName());
             salesRepository.save(post);
             return post;
         }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, saleId));

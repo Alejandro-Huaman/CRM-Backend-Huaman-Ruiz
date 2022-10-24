@@ -48,6 +48,9 @@ public class Sales {
     @NotBlank
     private String amount;
 
+    @Enumerated(EnumType.STRING)
+    private StatusName statusName;
+
     @OneToMany(targetEntity = Task.class,cascade = CascadeType.ALL)
     @JoinColumn(name = "salesid",referencedColumnName = "id")
     private List<Task> tasks;

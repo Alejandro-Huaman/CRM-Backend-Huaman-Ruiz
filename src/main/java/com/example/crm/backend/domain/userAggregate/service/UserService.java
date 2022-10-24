@@ -14,7 +14,7 @@ public interface UserService {
     List<User> getUsers();
     Page<User> getUsers(Pageable pageable);
     User getUserById(Long userId);
-    User updateRolUser(Long userId, UpdateRolUserResource request);
+    User updateRolUser(Long userId, User request);
     User createUser(User user);
     User updateUser(Long userId, User request);
     ResponseEntity<?> deleteUser(Long userId);

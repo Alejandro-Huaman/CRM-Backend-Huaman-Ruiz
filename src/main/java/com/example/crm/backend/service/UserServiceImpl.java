@@ -54,12 +54,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateRolUser(Long userId, UpdateRolUserResource request) {
+    public User updateRolUser(Long userId, User request) {
         return userRepository.findById(userId).map(post->{
             Set<Rol> roles = new HashSet<>();
-            roles.add(rolService.findByName(request.getRolname()).get());
+            roles.add(rolService.findByName(request.getRolName()).get());
             post.setRoles(roles);
-            post.setRolName(request.getRolname());
+            post.setRolName(request.getRolName());
             userRepository.save(post);
             return post;
         }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, userId));
