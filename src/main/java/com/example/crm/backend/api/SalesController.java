@@ -36,7 +36,7 @@ public class SalesController {
     public SalesResource getSalesById(@PathVariable("saleId") Long saleId) {
         return mapper.toResource(salesService.getSaleById(saleId));
     }
-    @ApiOperation(value = "Get a Sale by Name",notes = "Esta consulta consiste en obtener una venta segun su estado")
+    @ApiOperation(value = "Get a Sale by Status Id",notes = "Esta consulta consiste en obtener una venta segun su estado")
     @GetMapping("/status/{statusId}/sales")
     public Page<SalesResource> getSalesByStatusId(@PathVariable("statusId") Long statusId,Pageable pageable) {
         return mapper.modelListToPage(salesService.getSaleByStatus(statusId),pageable);
