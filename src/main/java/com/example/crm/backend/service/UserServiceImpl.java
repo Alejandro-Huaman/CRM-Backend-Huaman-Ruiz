@@ -8,6 +8,8 @@ import com.example.crm.backend.domain.userAggregate.model.enumeration.RolName;
 import com.example.crm.backend.domain.userAggregate.persistence.UserRepository;
 import com.example.crm.backend.domain.userAggregate.service.RolService;
 import com.example.crm.backend.domain.userAggregate.service.UserService;
+import com.example.crm.backend.resource.User.UpdateRolUserResource;
+import com.example.crm.backend.resource.User.UpdateUserResource;
 import com.example.crm.shared.exception.ResourceNotFoundException;
 import com.example.crm.shared.exception.ResourcePerzonalized;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +54,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateRolUser(Long userId, User request) {
+    public User updateRolUser(Long userId, UpdateRolUserResource request) {
         return userRepository.findById(userId).map(post->{
-            post.setRoles(request.getRoles());
+            Set<Rol> roles = new HashSet<>();
+            roles.add(rolService.findByName(request.getRolname()).get());
+            post.setRoles(roles);
+            post.setRolName(request.getRolname());
             userRepository.save(post);
             return post;
         }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, userId));

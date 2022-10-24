@@ -51,7 +51,7 @@ public class UserController {
     @ApiOperation(value = "Update Rol of a User",notes = "Esta consulta consiste en actualizar el rol de un usuario")
     @PutMapping("{userId}/rol")
     public UserResource updateRolUser(@PathVariable Long userId, @RequestBody UpdateRolUserResource request) {
-        return mapper.toResource(userService.updateRolUser(userId, mapper.toModel(request)));
+        return mapper.toResource(userService.updateRolUser(userId, request));
     }
 
     @ApiOperation(value = "Update a User",notes = "Esta consulta consiste en actualizar la informacion de un usuario")
