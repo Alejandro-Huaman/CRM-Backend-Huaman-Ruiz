@@ -5,7 +5,6 @@ import com.example.crm.backend.domain.userAggregate.model.enumeration.RolName;
 import lombok.*;
 
 import javax.persistence.*;
-
 @Getter
 @Setter
 @Entity

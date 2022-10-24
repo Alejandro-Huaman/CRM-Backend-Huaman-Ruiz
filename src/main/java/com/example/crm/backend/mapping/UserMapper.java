@@ -24,11 +24,11 @@ public class UserMapper implements Serializable {
     @Autowired
     EnhancedModelMapper mapper;
 
-    public UserResource toResource(Task model) {
+    public UserResource toResource(User model) {
         return mapper.map(model, UserResource.class);
     }
 
-    public Page<UserResource> modelListToPage(List<Task> modelList, Pageable pageable) {
+    public Page<UserResource> modelListToPage(List<User> modelList, Pageable pageable) {
         return new PageImpl<>(mapper.mapList(modelList, UserResource.class), pageable, modelList.size());
     }
     public User toModel(CreateUserResource resource) {

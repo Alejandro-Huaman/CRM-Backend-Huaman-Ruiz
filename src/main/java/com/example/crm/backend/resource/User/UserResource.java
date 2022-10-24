@@ -1,5 +1,6 @@
 package com.example.crm.backend.resource.User;
 
+import com.example.crm.backend.domain.userAggregate.model.entity.Rol;
 import com.example.crm.backend.domain.userAggregate.model.enumeration.RolName;
 import lombok.Getter;
 import lombok.Setter;

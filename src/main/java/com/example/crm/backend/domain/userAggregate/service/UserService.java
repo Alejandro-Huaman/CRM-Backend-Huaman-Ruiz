@@ -13,7 +13,7 @@ public interface UserService {
     Page<User> getUsers(Pageable pageable);
     User getUserById(Long userId);
     User updateRolUser(Long userId, User request);
-    void createUser(User user);
+    User createUser(User user);
     User updateUser(Long userId, User request);
     ResponseEntity<?> deleteUser(Long userId);
 }

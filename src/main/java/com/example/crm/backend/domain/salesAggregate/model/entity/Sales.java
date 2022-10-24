@@ -1,6 +1,7 @@
 package com.example.crm.backend.domain.salesAggregate.model.entity;
 
 import com.example.crm.backend.domain.activityAggregate.model.entity.Task;
+import com.example.crm.backend.domain.salesAggregate.model.enumeration.StatusName;
 import com.example.crm.backend.domain.userAggregate.model.entity.Rol;
 import com.example.crm.backend.domain.userAggregate.model.entity.User;
 import lombok.*;
@@ -40,8 +41,7 @@ public class Sales {
     @JoinColumn(name = "customerid")
     private Customer customer;
 
-    @NotNull
-    @NotBlank
+    @Temporal(TemporalType.DATE)
     private Date finishdate;
 
     @NotNull
@@ -54,7 +54,8 @@ public class Sales {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "sales_status",
-            joinColumns = @JoinColumn(name = "sale_id"),
+            joinColumns = @JoinColumn(name = "sales_id"),
             inverseJoinColumns = @JoinColumn(name = "status_id"))
-    private Set<Status> status = new HashSet<>();
+    private Set<Status> status=new HashSet<>();
+
 }

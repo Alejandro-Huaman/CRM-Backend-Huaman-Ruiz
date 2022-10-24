@@ -13,8 +13,8 @@ public interface CustomerService {
     List<Customer> getCustomers();
     Page<Customer> getCustomers(Pageable pageable);
     Customer getCustomerById(Long customerId);
-    Customer getCustomerByName(String name);
-    void createCustomer(Customer customer);
+    List<Customer> getCustomerByName(String name);
+    Customer createCustomer(Customer customer);
     Customer updateCustomer(Long customerId, Customer request);
     ResponseEntity<?> deleteCustomer(Long customerId);
 
