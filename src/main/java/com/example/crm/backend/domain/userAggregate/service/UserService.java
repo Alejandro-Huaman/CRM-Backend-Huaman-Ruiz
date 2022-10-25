@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
@@ -18,4 +19,7 @@ public interface UserService {
     User createUser(User user);
     User updateUser(Long userId, User request);
     ResponseEntity<?> deleteUser(Long userId);
+    Optional<User> getbyNombreUsuarioOrEmail(String nombreOremail);
+    boolean existsByNombreUsuario(String nombreUsuario);
+    boolean existsByEmail(String nombreUsuario);
 }

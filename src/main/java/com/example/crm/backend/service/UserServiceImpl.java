@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -52,6 +53,22 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException(ENTITY, userId));
     }
+
+    @Override
+    public Optional<User> getbyNombreUsuarioOrEmail(String nombreOremail) {
+        return userRepository.findByUsernameOrEmail(nombreOremail,nombreOremail);
+    }
+
+    @Override
+    public boolean existsByNombreUsuario(String nombreUsuario) {
+        return userRepository.existsByUsername(nombreUsuario);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
 
     @Override
     public User updateRolUser(Long userId, User request) {
