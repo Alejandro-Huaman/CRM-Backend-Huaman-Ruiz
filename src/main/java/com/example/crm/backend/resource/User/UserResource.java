@@ -24,6 +24,8 @@ public class UserResource {
 
     private String lastname;
 
+    private String business;
+
     private String email;
 
     private String username;
