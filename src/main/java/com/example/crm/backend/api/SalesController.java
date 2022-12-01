@@ -36,6 +36,16 @@ public class SalesController {
     public SalesResource getSalesById(@PathVariable("saleId") Long saleId) {
         return mapper.toResource(salesService.getSaleById(saleId));
     }
+    @ApiOperation(value = "Get a Sale by User ID",notes = "Esta consulta consiste en obtener una venta segun el ID del usuario")
+    @GetMapping("/sales/user/{userId}")
+    public Page<SalesResource> getSalesByUserId(@PathVariable("userId") Long userId, Pageable pageable) {
+        return mapper.modelListToPage(salesService.getSaleByUserId(userId),pageable);
+    }
+    @ApiOperation(value = "Get a Sale by Customer ID",notes = "Esta consulta consiste en obtener una venta segun el ID del cliente")
+    @GetMapping("/sales/customer/{customerId}")
+    public Page<SalesResource> getSalesByCustomerId(@PathVariable("customerId") Long customerId, Pageable pageable) {
+        return mapper.modelListToPage(salesService.getSaleByCustomerId(customerId),pageable);
+    }
     @ApiOperation(value = "Get a Sale by Status Id",notes = "Esta consulta consiste en obtener ventas segun su estado")
     @GetMapping("/status/{statusId}/sales")
     public Page<SalesResource> getSalesByStatusId(@PathVariable("statusId") Long statusId,Pageable pageable) {

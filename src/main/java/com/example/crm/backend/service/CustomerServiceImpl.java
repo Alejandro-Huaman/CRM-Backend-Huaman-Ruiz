@@ -60,10 +60,10 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer updateCustomer(Long customerId, Customer request) {
         return customerRepository.findById(customerId).map(post->{
             post.setName(request.getName());
-            post.setLastname(request.getLastname());
+            post.setBusinessname(request.getBusinessname());
             post.setEmail(request.getEmail());
-            post.setPhone(request.getPhone());
-            post.setRut(request.getRut());
+            post.setRuc(request.getRuc());
+            post.setFiscaladdress(request.getFiscaladdress());
             customerRepository.save(post);
             return post;
         }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, customerId));

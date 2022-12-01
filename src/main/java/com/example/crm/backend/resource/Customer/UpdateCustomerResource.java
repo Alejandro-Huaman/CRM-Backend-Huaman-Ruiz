@@ -8,11 +8,11 @@ import lombok.Setter;
 public class UpdateCustomerResource {
     private String name;
 
-    private String lastname;
+    private String businessname;
+
+    private String ruc;
+
+    private String fiscaladdress;
 
     private String email;
-
-    private String phone;
-
-    private String rut;
 }

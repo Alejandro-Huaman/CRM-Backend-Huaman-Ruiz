@@ -31,7 +31,17 @@ public class Customer {
     @NotNull
     @NotBlank
     @Size(max = 30)
-    private String lastname;
+    private String businessname;
+
+    @NotNull
+    @NotBlank
+    @Size(max = 30)
+    private String ruc;
+
+    @NotNull
+    @NotBlank
+    @Size(max = 30)
+    private String fiscaladdress;
 
     @NotNull
     @NotBlank
@@ -39,16 +49,6 @@ public class Customer {
     @Size(max = 70)
     @Column(unique = true)
     private String email;
-
-    @NotNull
-    @NotBlank
-    @Size(max = 15)
-    private String phone;
-
-    @NotNull
-    @NotBlank
-    @Size(max = 15)
-    private String rut;
 
     @OneToMany(targetEntity = Sales.class,cascade = CascadeType.ALL)
     @JoinColumn(name = "customerid",referencedColumnName = "id")

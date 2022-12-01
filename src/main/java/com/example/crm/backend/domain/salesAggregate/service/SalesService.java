@@ -15,5 +15,8 @@ public interface SalesService {
     Sales createSale(Long userId,Long customerId,Sales sale);
     Sales updateStatusSales(Long saleId,Sales request);
     ResponseEntity<?> deleteSale(Long saleId);
+    List<Sales> getSaleByUserId(Long userId);
+    List<Sales> getSaleByCustomerId(Long customerId);
+
 
 }

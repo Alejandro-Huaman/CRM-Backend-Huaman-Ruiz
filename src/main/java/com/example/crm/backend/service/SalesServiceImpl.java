@@ -114,4 +114,14 @@ public class SalesServiceImpl implements SalesService {
             return ResponseEntity.ok().build();
         }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, saleId));
     }
+
+    @Override
+    public List<Sales> getSaleByUserId(Long userId) {
+        return salesRepository.findByUserId(userId);
+    }
+
+    @Override
+    public List<Sales> getSaleByCustomerId(Long customerId) {
+        return salesRepository.findByCustomerId(customerId);
+    }
 }
