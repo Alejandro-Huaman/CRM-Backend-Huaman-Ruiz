@@ -58,10 +58,6 @@ public class User {
     @NotBlank
     private String password;
 
-    @NotNull
-    @NotBlank
-    private String business;
-
     @Enumerated(EnumType.STRING)
     private RolName rolName;
 

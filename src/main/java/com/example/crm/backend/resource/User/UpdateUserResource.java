@@ -10,8 +10,6 @@ public class UpdateUserResource {
 
     private String lastname;
 
-    private String business;
-
     private String email;
 
     private String username;
