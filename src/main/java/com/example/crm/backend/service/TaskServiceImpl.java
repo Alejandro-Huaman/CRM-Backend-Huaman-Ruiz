@@ -53,11 +53,9 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task createTask(Long saleId,Task task) {
-        Date date = new Date();
         return salesRepository.findById(saleId)
                 .map(sales -> {
                     task.setSales(sales);
-                    task.setDate(date);
                     return taskRepository.save(task);
                 })
                 .orElseThrow(() -> new ResourceNotFoundException(ENTITY2, saleId));

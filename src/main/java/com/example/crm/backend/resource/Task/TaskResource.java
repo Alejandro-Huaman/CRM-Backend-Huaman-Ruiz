@@ -1,5 +1,6 @@
 package com.example.crm.backend.resource.Task;
 
+import com.example.crm.backend.resource.Sales.SalesResource;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,4 +27,6 @@ public class TaskResource {
     private String finalhour;
 
     private String description;
+
+    private SalesResource sale;
 }
