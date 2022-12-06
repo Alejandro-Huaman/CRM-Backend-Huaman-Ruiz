@@ -37,8 +37,8 @@ public class CustomerController {
     }
     @ApiOperation(value = "Get a Customer by Name",notes = "Esta consulta consiste en obtener un cliente segun su nombre")
     @GetMapping("/name/{customername}")
-    public Page<CustomerResource> getCustomerByName(@PathVariable("customername") String customername,Pageable pageable) {
-        return mapper.modelListToPage(customerService.getCustomerByName(customername),pageable);
+    public CustomerResource getCustomerByName(@PathVariable("customername") String customername) {
+        return mapper.toResource(customerService.getCustomerByName(customername));
     }
 
     @ApiOperation(value = "Create a Customer",notes = "Esta consulta consiste en crear a un cliente")

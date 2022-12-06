@@ -26,6 +26,7 @@ public class Customer {
     @NotNull
     @NotBlank
     @Size(max = 30)
+    @Column(unique = true)
     private String name;
 
     @NotNull

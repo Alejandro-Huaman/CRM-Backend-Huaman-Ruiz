@@ -28,5 +28,5 @@ public class TaskResource {
 
     private String description;
 
-    private SalesResource sale;
+    private SalesResource sales;
 }
