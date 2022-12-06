@@ -33,6 +33,10 @@ public class Task {
     @Size(max = 100)
     private String description;
 
+    private String inithour;
+
+    private String finalhour;
+
     @ManyToOne(targetEntity = Sales.class)
     @JoinColumn(name = "salesid")
     private Sales sales;

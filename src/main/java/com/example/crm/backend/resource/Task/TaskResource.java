@@ -21,5 +21,9 @@ public class TaskResource {
 
     private Date date;
 
+    private String inithour;
+
+    private String finalhour;
+
     private String description;
 }
