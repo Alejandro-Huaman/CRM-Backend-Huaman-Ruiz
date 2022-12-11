@@ -57,7 +57,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
     private ApiInfo apiInfo() {
         return new ApiInfo(
                 "CRM API",
-                "Api for CRM Applicaitons",
+                "Api for CRM Applications",
                 "1.0",
                 "http://codmind.com/terms",
                 new Contact("Alejandro", "https://google.com", "AlejandroHuaman@gmail.com"),
