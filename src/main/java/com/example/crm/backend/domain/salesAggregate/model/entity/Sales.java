@@ -45,6 +45,12 @@ public class Sales {
     private Date finishdate;
 
     @NotNull
+    private Integer month;
+
+    @NotNull
+    private Integer year;
+
+    @NotNull
     @NotBlank
     private String amount;
 

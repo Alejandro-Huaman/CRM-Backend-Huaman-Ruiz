@@ -18,6 +18,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -89,6 +93,10 @@ public class SalesServiceImpl implements SalesService {
                     sale.setUser(users);
                     sale.setCustomer(customer);
                     sale.setStatus(status);
+                    sale.setMonth(sale.getFinishdate().getMonth()+1);
+                    Calendar calendar = new GregorianCalendar();
+                    calendar.setTime(sale.getFinishdate());
+                    sale.setYear(calendar.get(Calendar.YEAR));
                     sale.setStatusName(StatusName.Qualification);
                     return salesRepository.save(sale);
                 })
@@ -124,4 +132,20 @@ public class SalesServiceImpl implements SalesService {
     public List<Sales> getSaleByCustomerId(Long customerId) {
         return salesRepository.findByCustomerId(customerId);
     }
+
+    @Override
+    public List<Sales> getSaleByMonth(Integer month) {
+        return salesRepository.findByMonth(month);
+    }
+
+    @Override
+    public List<Sales> getSaleByYear(Integer year) {
+        return salesRepository.findByYear(year);
+    }
+
+    @Override
+    public Long getNumberofSaleByCustomerId(Long customerid) {
+        return salesRepository.CountSaleByCustomerId(customerid);
+    }
+
 }

@@ -4,6 +4,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 public interface SalesService {
@@ -17,6 +19,7 @@ public interface SalesService {
     ResponseEntity<?> deleteSale(Long saleId);
     List<Sales> getSaleByUserId(Long userId);
     List<Sales> getSaleByCustomerId(Long customerId);
-
-
+    List<Sales> getSaleByMonth(Integer month);
+    List<Sales> getSaleByYear(Integer year);
+    Long getNumberofSaleByCustomerId(Long customerid);
 }

@@ -17,6 +17,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.util.Date;
+
 @RestController
 @RequestMapping("/api/v1")
 public class SalesController {
@@ -40,6 +43,21 @@ public class SalesController {
     @GetMapping("/sales/user/{userId}")
     public Page<SalesResource> getSalesByUserId(@PathVariable("userId") Long userId, Pageable pageable) {
         return mapper.modelListToPage(salesService.getSaleByUserId(userId),pageable);
+    }
+    @ApiOperation(value = "Get a Sale by Month",notes = "Esta consulta consiste en obtener una venta segun su mes")
+    @GetMapping("/sales/month/{month}")
+    public Page<SalesResource> getSalesByMonth(@PathVariable("month") String month, Pageable pageable) {
+        return mapper.modelListToPage(salesService.getSaleByMonth(Integer.parseInt(month)),pageable);
+    }
+    @ApiOperation(value = "Get a Sale by Year",notes = "Esta consulta consiste en obtener una venta segun su año")
+    @GetMapping("/sales/year/{year}")
+    public Page<SalesResource> getSalesByYear(@PathVariable("year") String year, Pageable pageable) {
+        return mapper.modelListToPage(salesService.getSaleByYear(Integer.parseInt(year)),pageable);
+    }
+    @ApiOperation(value = "Get Number of Sale by Customer ID",notes = "Esta consulta consiste en obtener el numero de ventas segun el ID del cliente")
+    @GetMapping("/numbersales/customer/{customerid}")
+    public Long getNumberSalesByCustomerId(@PathVariable("customerid") Long customerid) {
+        return salesService.getNumberofSaleByCustomerId(customerid);
     }
     @ApiOperation(value = "Get a Sale by Customer ID",notes = "Esta consulta consiste en obtener una venta segun el ID del cliente")
     @GetMapping("/sales/customer/{customerId}")
@@ -69,4 +87,5 @@ public class SalesController {
     public ResponseEntity<?> deleteSale(@PathVariable Long saleId) {
         return salesService.deleteSale(saleId);
     }
+
 }
