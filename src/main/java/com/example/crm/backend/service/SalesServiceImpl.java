@@ -148,4 +148,9 @@ public class SalesServiceImpl implements SalesService {
         return salesRepository.CountSaleByCustomerId(customerid);
     }
 
+    @Override
+    public List<Sales> getSaleByMonthAndYear(Integer month, Integer year) {
+        return salesRepository.findByMonthAndYear(month,year);
+    }
+
 }

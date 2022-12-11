@@ -22,4 +22,5 @@ public interface SalesService {
     List<Sales> getSaleByMonth(Integer month);
     List<Sales> getSaleByYear(Integer year);
     Long getNumberofSaleByCustomerId(Long customerid);
+    List<Sales> getSaleByMonthAndYear(Integer month,Integer year);
 }

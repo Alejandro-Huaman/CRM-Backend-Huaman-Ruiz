@@ -54,6 +54,11 @@ public class SalesController {
     public Page<SalesResource> getSalesByYear(@PathVariable("year") String year, Pageable pageable) {
         return mapper.modelListToPage(salesService.getSaleByYear(Integer.parseInt(year)),pageable);
     }
+    @ApiOperation(value = "Get a Sale by Month and Year",notes = "Esta consulta consiste en obtener una venta segun el año y el mes")
+    @GetMapping("/sales/month/{month}/year/{year}")
+    public Page<SalesResource> getSalesByMonthAndYear(@PathVariable("month") String month,@PathVariable("year") String year, Pageable pageable) {
+        return mapper.modelListToPage(salesService.getSaleByMonthAndYear(Integer.parseInt(month),Integer.parseInt(year)),pageable);
+    }
     @ApiOperation(value = "Get Number of Sale by Customer ID",notes = "Esta consulta consiste en obtener el numero de ventas segun el ID del cliente")
     @GetMapping("/numbersales/customer/{customerid}")
     public Long getNumberSalesByCustomerId(@PathVariable("customerid") Long customerid) {
