@@ -54,6 +54,8 @@ public class Sales {
     @NotBlank
     private String amount;
 
+    private Date created_at;
+
     @Enumerated(EnumType.STRING)
     private StatusName statusName;
 

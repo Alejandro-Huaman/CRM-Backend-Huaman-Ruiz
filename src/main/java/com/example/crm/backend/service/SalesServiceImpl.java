@@ -98,6 +98,7 @@ public class SalesServiceImpl implements SalesService {
                     calendar.setTime(sale.getFinishdate());
                     sale.setYear(calendar.get(Calendar.YEAR));
                     sale.setStatusName(StatusName.Qualification);
+                    sale.setCreated_at(new Date());
                     return salesRepository.save(sale);
                 })
                 .orElseThrow(() -> new ResourceNotFoundException(ENTITY3, userId));

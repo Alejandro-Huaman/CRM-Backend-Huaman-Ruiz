@@ -30,12 +30,14 @@ public class Task {
     @NotNull
     private Date date;
 
-    @Size(max = 100)
+    @Size(max = 500)
     private String description;
 
     private String inithour;
 
     private String finalhour;
+
+    private Date created_at;
 
     @ManyToOne(targetEntity = Sales.class)
     @JoinColumn(name = "salesid")

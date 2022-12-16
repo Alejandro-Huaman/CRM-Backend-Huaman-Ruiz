@@ -56,6 +56,7 @@ public class TaskServiceImpl implements TaskService {
         return salesRepository.findById(saleId)
                 .map(sales -> {
                     task.setSales(sales);
+                    task.setCreated_at(new Date());
                     return taskRepository.save(task);
                 })
                 .orElseThrow(() -> new ResourceNotFoundException(ENTITY2, saleId));

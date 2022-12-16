@@ -29,4 +29,6 @@ public class TaskResource {
     private String description;
 
     private SalesResource sales;
+
+    private Date created_at;
 }

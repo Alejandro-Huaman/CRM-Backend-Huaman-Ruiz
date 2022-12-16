@@ -31,4 +31,6 @@ public class SalesResource {
     private String amount;
 
     private StatusName statusname;
+
+    private Date created_at;
 }
