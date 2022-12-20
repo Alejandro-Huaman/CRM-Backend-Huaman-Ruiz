@@ -25,7 +25,7 @@ public class PrincipalUser implements UserDetails {
 
     private String email;
 
-    private String phone;
+    private String typeusersale;
 
     private String username;
 
@@ -33,11 +33,11 @@ public class PrincipalUser implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public PrincipalUser(String name, String lastname, String email, String username, String password, String phone, Collection<? extends GrantedAuthority> authorities){
+    public PrincipalUser(String name, String lastname, String email, String username, String password, String typeusersale, Collection<? extends GrantedAuthority> authorities){
         this.name = name;
         this.lastname = lastname;
         this.email = email;
-        this.phone = phone;
+        this.typeusersale = typeusersale;
         this.username = username;
         this.password = password;
         this.authorities = authorities;
@@ -48,7 +48,7 @@ public class PrincipalUser implements UserDetails {
                 persona.getRoles().stream().map(rol -> new SimpleGrantedAuthority(rol
                         .getRolname().name())).collect(Collectors.toList());
 
-        return new PrincipalUser(persona.getName(), persona.getLastname(), persona.getEmail(),persona.getUsername(), persona.getPassword(),persona.getPhone(),authorities);
+        return new PrincipalUser(persona.getName(), persona.getLastname(), persona.getEmail(),persona.getUsername(), persona.getPassword(),persona.getTypeusersale(),authorities);
     }
 
     @Override

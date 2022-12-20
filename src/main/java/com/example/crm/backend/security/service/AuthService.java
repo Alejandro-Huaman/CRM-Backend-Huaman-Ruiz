@@ -73,14 +73,10 @@ public class AuthService {
         if (bindingResult.hasErrors()){
             return new ResponseEntity(new Message("campos mal puestos o email invalido"), HttpStatus.BAD_REQUEST);
         }
-        if(userService.existsByNombreUsuario(request.getUsername())){
-            return new ResponseEntity(new Message("ya existe nombre de usuario"), HttpStatus.BAD_REQUEST);
-        }
         if (userService.existsByEmail(request.getEmail())){
             return new ResponseEntity(new Message("ya existe email"), HttpStatus.BAD_REQUEST);
         }
         User user= new User();
-        user.setUsername(request.getUsername());
         user.setName(request.getName());
         user.setLastname(request.getLastname());
         user.setEmail(request.getEmail());
@@ -99,14 +95,10 @@ public class AuthService {
         if (bindingResult.hasErrors()){
             return new ResponseEntity(new Message("campos mal puestos o email invalido"), HttpStatus.BAD_REQUEST);
         }
-        if(userService.existsByNombreUsuario(request.getUsername())){
-            return new ResponseEntity(new Message("ya existe nombre de usuario"), HttpStatus.BAD_REQUEST);
-        }
         if (userService.existsByEmail(request.getEmail())){
             return new ResponseEntity(new Message("ya existe email"), HttpStatus.BAD_REQUEST);
         }
         User user= new User();
-        user.setUsername(request.getUsername());
         user.setName(request.getName());
         user.setLastname(request.getLastname());
         user.setEmail(request.getEmail());
@@ -124,14 +116,10 @@ public class AuthService {
         if (bindingResult.hasErrors()){
             return new ResponseEntity(new Message("campos mal puestos o email invalido"), HttpStatus.BAD_REQUEST);
         }
-        if(userService.existsByNombreUsuario(request.getUsername())){
-            return new ResponseEntity(new Message("ya existe nombre de usuario"), HttpStatus.BAD_REQUEST);
-        }
         if (userService.existsByEmail(request.getEmail())){
             return new ResponseEntity(new Message("ya existe email"), HttpStatus.BAD_REQUEST);
         }
         User user= new User();
-        user.setUsername(request.getUsername());
         user.setName(request.getName());
         user.setLastname(request.getLastname());
         user.setEmail(request.getEmail());

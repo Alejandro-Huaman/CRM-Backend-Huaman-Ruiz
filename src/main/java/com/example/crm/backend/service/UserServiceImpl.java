@@ -92,8 +92,6 @@ public class UserServiceImpl implements UserService {
     public User createUser(User user) {
         if(userRepository.existsByEmail(user.getEmail()))
             throw  new ResourcePerzonalized("Ya existe este email");
-        if(userRepository.existsByUsername(user.getUsername()))
-            throw  new ResourcePerzonalized("Ya existe este nombre de usuario");
 
         return userRepository.save(user);
     }

@@ -43,8 +43,6 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    @Size(max = 30)
-    @Column(unique = true)
     private String username;
 
     @NotNull
