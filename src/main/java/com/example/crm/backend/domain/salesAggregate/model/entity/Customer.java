@@ -27,11 +27,6 @@ public class Customer {
     @NotBlank
     @Size(max = 30)
     @Column(unique = true)
-    private String name;
-
-    @NotNull
-    @NotBlank
-    @Size(max = 30)
     private String businessname;
 
     @NotNull

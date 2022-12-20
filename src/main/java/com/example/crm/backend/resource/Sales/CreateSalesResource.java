@@ -15,4 +15,6 @@ public class CreateSalesResource {
     private Date finishdate;
 
     private String amount;
+
+    private String typecoin;
 }

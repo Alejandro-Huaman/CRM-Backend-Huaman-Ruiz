@@ -44,8 +44,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer getCustomerByName(String name) {
-        return customerRepository.findByName(name);
+    public Customer getCustomerByBusinessName(String businessname) {
+        return customerRepository.findByBusinessname(businessname);
     }
 
     @Override
@@ -59,7 +59,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer updateCustomer(Long customerId, Customer request) {
         return customerRepository.findById(customerId).map(post->{
-            post.setName(request.getName());
             post.setBusinessname(request.getBusinessname());
             post.setEmail(request.getEmail());
             post.setRuc(request.getRuc());

@@ -6,7 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UpdateCustomerResource {
-    private String name;
 
     private String businessname;
 

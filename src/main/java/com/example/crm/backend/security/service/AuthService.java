@@ -84,7 +84,7 @@ public class AuthService {
         user.setName(request.getName());
         user.setLastname(request.getLastname());
         user.setEmail(request.getEmail());
-        user.setPhone(request.getPhone());
+        user.setTypeusersale(request.getTypeusersale());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         Set<Rol> roles = new HashSet<>();
         roles.add(getroleSalesManager());
@@ -110,7 +110,6 @@ public class AuthService {
         user.setName(request.getName());
         user.setLastname(request.getLastname());
         user.setEmail(request.getEmail());
-        user.setPhone(request.getPhone());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         Set<Rol> roles = new HashSet<>();
         roles.add(getroleProjectManager());
@@ -136,7 +135,6 @@ public class AuthService {
         user.setName(request.getName());
         user.setLastname(request.getLastname());
         user.setEmail(request.getEmail());
-        user.setPhone(request.getPhone());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         Set<Rol> roles = new HashSet<>();
         roles.add(getroleEngineeringChief());

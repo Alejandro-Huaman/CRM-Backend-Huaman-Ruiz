@@ -9,8 +9,6 @@ public class CustomerResource {
 
     private Long id;
 
-    private String name;
-
     private String businessname;
 
     private String ruc;

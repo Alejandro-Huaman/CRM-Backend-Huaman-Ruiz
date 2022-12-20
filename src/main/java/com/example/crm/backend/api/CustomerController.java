@@ -35,10 +35,10 @@ public class CustomerController {
     public CustomerResource getCustomerById(@PathVariable("customerId") Long customerId) {
         return mapper.toResource(customerService.getCustomerById(customerId));
     }
-    @ApiOperation(value = "Get a Customer by Name",notes = "Esta consulta consiste en obtener un cliente segun su nombre")
-    @GetMapping("/name/{customername}")
-    public CustomerResource getCustomerByName(@PathVariable("customername") String customername) {
-        return mapper.toResource(customerService.getCustomerByName(customername));
+    @ApiOperation(value = "Get a Customer by Businessname",notes = "Esta consulta consiste en obtener un cliente segun su razon social")
+    @GetMapping("/businessname/{businessname}")
+    public CustomerResource getCustomerByBusinessname(@PathVariable("businessname") String businessname) {
+        return mapper.toResource(customerService.getCustomerByBusinessName(businessname));
     }
 
     @ApiOperation(value = "Create a Customer",notes = "Esta consulta consiste en crear a un cliente")

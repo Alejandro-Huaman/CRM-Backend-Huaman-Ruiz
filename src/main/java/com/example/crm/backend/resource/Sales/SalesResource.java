@@ -33,4 +33,6 @@ public class SalesResource {
     private StatusName statusname;
 
     private Date created_at;
+
+    private String typecoin;
 }

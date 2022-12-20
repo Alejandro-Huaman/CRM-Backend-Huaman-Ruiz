@@ -20,13 +20,11 @@ public class newUser {
     @NotBlank
     private String email;
 
-    @NotBlank
-    private String phone;
-
-    @NotBlank
     private String username;
 
     @NotBlank
     private String password;
+
+    private String typeusersale;
 
 }

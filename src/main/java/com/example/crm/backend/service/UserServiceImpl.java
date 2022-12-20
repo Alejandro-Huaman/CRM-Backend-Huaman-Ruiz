@@ -105,8 +105,8 @@ public class UserServiceImpl implements UserService {
             post.setLastname(request.getLastname());
             post.setEmail(request.getEmail());
             post.setUsername(request.getUsername());
-            post.setPhone(request.getPhone());
             post.setPassword(request.getPassword());
+            post.setTypeusersale(request.getTypeusersale());
             userRepository.save(post);
             return post;
         }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, userId));

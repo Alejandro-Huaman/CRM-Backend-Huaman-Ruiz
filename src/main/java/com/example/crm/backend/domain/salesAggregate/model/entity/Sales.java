@@ -56,6 +56,10 @@ public class Sales {
 
     private Date created_at;
 
+    @NotNull
+    @NotBlank
+    private String typecoin;
+
     @Enumerated(EnumType.STRING)
     private StatusName statusName;
 

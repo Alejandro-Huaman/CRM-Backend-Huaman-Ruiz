@@ -43,20 +43,15 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    @NotNull
-    @NotBlank
     @Size(max = 30)
     @Column(unique = true)
     private String username;
 
     @NotNull
     @NotBlank
-    @Size(max = 15)
-    private String phone;
-
-    @NotNull
-    @NotBlank
     private String password;
+
+    private String typeusersale;
 
     @Enumerated(EnumType.STRING)
     private RolName rolName;

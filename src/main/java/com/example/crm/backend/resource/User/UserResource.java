@@ -28,9 +28,9 @@ public class UserResource {
 
     private String username;
 
-    private String phone;
-
     private String password;
 
     private RolName rolname;
+
+    private String typeusersale;
 }
