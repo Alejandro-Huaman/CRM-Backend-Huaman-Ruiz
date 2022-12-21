@@ -21,6 +21,6 @@ public interface UserService {
     ResponseEntity<?> deleteUser(Long userId);
     Optional<User> getbyNombreUsuarioOrEmail(String nombreOremail);
     boolean existsByNombreUsuario(String nombreUsuario);
-    User getUserByUsername(String username);
+    User getUserByEmail(String email);
     boolean existsByEmail(String nombreUsuario);
 }

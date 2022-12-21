@@ -42,10 +42,10 @@ public class UserController {
         return mapper.toResource(userService.getUserById(userId));
     }
 
-    @ApiOperation(value = "Get a User by Username",notes = "Esta consulta consiste en obtener un usuario segun su nombre de usuario")
-    @GetMapping("name/{username}")
-    public UserResource getUserByUsername(@PathVariable("username") String username) {
-        return mapper.toResource(userService.getUserByUsername(username));
+    @ApiOperation(value = "Get a User by Email",notes = "Esta consulta consiste en obtener un usuario segun su email")
+    @GetMapping("email/{email}")
+    public UserResource getUserByUsername(@PathVariable("email") String email) {
+        return mapper.toResource(userService.getUserByEmail(email));
     }
 
     @ApiOperation(value = "Create a User",notes = "Esta consulta consiste en crear a un usuario")
