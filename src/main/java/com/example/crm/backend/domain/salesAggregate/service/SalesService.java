@@ -23,4 +23,5 @@ public interface SalesService {
     List<Sales> getSaleByYear(Integer year);
     Long getNumberofSaleByCustomerId(Long customerid);
     List<Sales> getSaleByMonthAndYear(Integer month,Integer year);
+    List<Sales> getSaleByUserIdAndMonthAndYear(Long userId, Integer month,Integer year);
 }

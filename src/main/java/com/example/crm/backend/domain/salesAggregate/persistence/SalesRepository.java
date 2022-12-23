@@ -17,6 +17,7 @@ public interface SalesRepository extends JpaRepository<Sales,Long> {
     List<Sales> findByMonth(Integer month);
     List<Sales> findByYear(Integer year);
     List<Sales> findByMonthAndYear(Integer month,Integer year);
+    List<Sales> findByUserIdAndMonthAndYear(Long userId,Integer month,Integer year);
     @Query(value = "SELECT COUNT(*) FROM sales Where customerid=:customerid",nativeQuery = true)
     Long CountSaleByCustomerId(@Param("customerid") Long customerid);
 }

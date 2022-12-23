@@ -154,4 +154,9 @@ public class SalesServiceImpl implements SalesService {
         return salesRepository.findByMonthAndYear(month,year);
     }
 
+    @Override
+    public List<Sales> getSaleByUserIdAndMonthAndYear(Long userId, Integer month, Integer year) {
+        return salesRepository.findByUserIdAndMonthAndYear(userId,month,year);
+    }
+
 }
