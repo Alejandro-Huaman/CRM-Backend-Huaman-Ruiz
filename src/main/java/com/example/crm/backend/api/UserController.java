@@ -3,6 +3,7 @@ package com.example.crm.backend.api;
 import com.example.crm.backend.domain.activityAggregate.service.TaskService;
 import com.example.crm.backend.domain.salesAggregate.service.CustomerService;
 import com.example.crm.backend.domain.userAggregate.service.UserService;
+import com.example.crm.backend.image.ImageModel;
 import com.example.crm.backend.mapping.CustomerMapper;
 import com.example.crm.backend.mapping.TaskMapper;
 import com.example.crm.backend.mapping.UserMapper;
@@ -12,12 +13,16 @@ import com.example.crm.backend.resource.Customer.UpdateCustomerResource;
 import com.example.crm.backend.resource.Task.CreateTaskResource;
 import com.example.crm.backend.resource.Task.TaskResource;
 import com.example.crm.backend.resource.User.*;
+import com.example.crm.shared.exception.Message;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -73,5 +78,22 @@ public class UserController {
     @DeleteMapping("{userId}")
     public ResponseEntity<?> deleteUser(@PathVariable Long userId) {
         return userService.deleteUser(userId);
+    }
+
+    @ApiOperation(value="Update a Photo",notes = "Esta consulta consiste en actualizar la foto de un usuario segun el id de este")
+    @PutMapping("{userId}/updatephoto")
+    public void updatePhoto( @PathVariable Long userId,@RequestParam("file") MultipartFile file) throws IOException {
+        userService.updatephoto(userId,file);
+    }
+
+    @ApiOperation(value="Get Image",notes = "Esta consulta nos retorna la imagen de perfil del usuario segun su id")
+    @GetMapping("onlyimage/{userId}")
+    public ResponseEntity<byte[]> getImage (@PathVariable("userId") Long userId) throws Message {
+        return  userService.getprofileimage(userId);
+    }
+    @ApiOperation(value="Get Image Content",notes = "Esta consulta nos retorna los detalles de la imagen del usuario segun el id de este")
+    @GetMapping("image/{userId}")
+    public ImageModel getImagecontent (@PathVariable("userId") Long userId) throws IOException, Message {
+        return  userService.getImageDetails(userId);
     }
 }
