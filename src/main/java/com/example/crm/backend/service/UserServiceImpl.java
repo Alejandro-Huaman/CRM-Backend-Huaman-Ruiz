@@ -91,50 +91,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<Object> updatephoto(Long userId, MultipartFile file) throws IOException {
-        Optional<User> value = userRepository.findById(userId);
-        if (value.isPresent()){
-
-            try{
-                value.get().setContent(ImageUtility.compressImage(file.getBytes()));
-                value.get().setImageprofiletype(file.getContentType());
-                userRepository.save(value.get());
-                return ResponseEntity.ok().build();
-            }catch (IOException e) {
-                logger.info("context", e);
-                return null;
-            }
-
-        }
-
-        return null;
-    }
-
-    @Override
-    public ResponseEntity<byte[]> getprofileimage(Long userId) throws Message {
-        Optional<User> db = userRepository.findById(userId);
-        if(db.isPresent()) {
-            return ResponseEntity
-                    .ok()
-                    .contentType(MediaType.valueOf(db.get().getImageprofiletype()))
-                    .body(ImageUtility.decompressImage(db.get().getContent()));
-        }
-        throw new Message("Error");
-    }
-
-    @Override
-    public ImageModel getImageDetails(Long MultimediaId) throws Message {
-        Optional<User> db = userRepository.findById(MultimediaId);
-        if(db.isPresent()){
-            ImageModel imageModel= new ImageModel(db.get().getId(),db.get().getImageprofiletype(),ImageUtility.decompressImage(db.get().getContent()));
-            return imageModel;
-        }
-
-        throw new Message("Error");
-    }
-
-
-    @Override
     public User updateRolUser(Long userId, User request) {
         return userRepository.findById(userId).map(post->{
             Set<Rol> roles = new HashSet<>();

@@ -28,7 +28,4 @@ public interface UserService {
     boolean existsByNombreUsuario(String nombreUsuario);
     User getUserByEmail(String email);
     boolean existsByEmail(String nombreUsuario);
-    ResponseEntity<Object> updatephoto(Long userId, MultipartFile file) throws IOException;
-    ResponseEntity<byte[]> getprofileimage(Long userId) throws Message;
-    ImageModel getImageDetails(Long MultimediaId) throws Message;
 }

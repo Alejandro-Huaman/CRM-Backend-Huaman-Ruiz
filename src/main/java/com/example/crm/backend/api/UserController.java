@@ -80,20 +80,4 @@ public class UserController {
         return userService.deleteUser(userId);
     }
 
-    @ApiOperation(value="Update a Photo",notes = "Esta consulta consiste en actualizar la foto de un usuario segun el id de este")
-    @PutMapping("{userId}/updatephoto")
-    public void updatePhoto( @PathVariable Long userId,@RequestParam("file") MultipartFile file) throws IOException {
-        userService.updatephoto(userId,file);
-    }
-
-    @ApiOperation(value="Get Image",notes = "Esta consulta nos retorna la imagen de perfil del usuario segun su id")
-    @GetMapping("onlyimage/{userId}")
-    public ResponseEntity<byte[]> getImage (@PathVariable("userId") Long userId) throws Message {
-        return  userService.getprofileimage(userId);
-    }
-    @ApiOperation(value="Get Image Content",notes = "Esta consulta nos retorna los detalles de la imagen del usuario segun el id de este")
-    @GetMapping("image/{userId}")
-    public ImageModel getImagecontent (@PathVariable("userId") Long userId) throws IOException, Message {
-        return  userService.getImageDetails(userId);
-    }
 }

@@ -51,11 +51,6 @@ public class User {
 
     private String typeusersale;
 
-    @Lob
-    private byte[] content;
-
-    private String imageprofiletype;
-
     @Enumerated(EnumType.STRING)
     private RolName rolName;
 
