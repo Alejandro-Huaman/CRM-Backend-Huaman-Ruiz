@@ -11,10 +11,7 @@ import com.example.crm.backend.resource.Customer.CustomerResource;
 import com.example.crm.backend.resource.Customer.UpdateCustomerResource;
 import com.example.crm.backend.resource.Task.CreateTaskResource;
 import com.example.crm.backend.resource.Task.TaskResource;
-import com.example.crm.backend.resource.User.CreateUserResource;
-import com.example.crm.backend.resource.User.UpdateRolUserResource;
-import com.example.crm.backend.resource.User.UpdateUserResource;
-import com.example.crm.backend.resource.User.UserResource;
+import com.example.crm.backend.resource.User.*;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -64,6 +61,12 @@ public class UserController {
     @PutMapping("{userId}")
     public UserResource updateUser(@PathVariable Long userId, @RequestBody UpdateUserResource request) {
         return mapper.toResource(userService.updateUser(userId, mapper.toModel(request)));
+    }
+
+    @ApiOperation(value = "Update Password User",notes = "Esta consulta consiste en actualizar la contraseña de un usuario")
+    @PutMapping("{userId}/password")
+    public UserResource updatePasswordUser(@PathVariable Long userId, @RequestBody UpdateUserPasswordResource request) {
+        return mapper.toResource(userService.updatePasswordUserCodified(userId, mapper.toModel(request)));
     }
 
     @ApiOperation(value = "Delete a User",notes = "Esta consulta consiste en eliminar un usuario")

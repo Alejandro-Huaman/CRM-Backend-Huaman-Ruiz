@@ -18,6 +18,7 @@ public interface UserService {
     User updateRolUser(Long userId, User request);
     User createUser(User user);
     User updateUser(Long userId, User request);
+    User updatePasswordUserCodified(Long userId, User request);
     ResponseEntity<?> deleteUser(Long userId);
     Optional<User> getbyNombreUsuarioOrEmail(String nombreOremail);
     boolean existsByNombreUsuario(String nombreUsuario);

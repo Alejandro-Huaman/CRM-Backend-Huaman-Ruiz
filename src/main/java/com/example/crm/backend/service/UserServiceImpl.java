@@ -13,9 +13,11 @@ import com.example.crm.backend.resource.User.UpdateUserResource;
 import com.example.crm.shared.exception.ResourceNotFoundException;
 import com.example.crm.shared.exception.ResourcePerzonalized;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -33,6 +35,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     RolService rolService;
+    @Lazy
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     public UserServiceImpl() {
 
@@ -103,8 +108,14 @@ public class UserServiceImpl implements UserService {
             post.setLastname(request.getLastname());
             post.setEmail(request.getEmail());
             post.setUsername(request.getUsername());
-            post.setPassword(request.getPassword());
-            post.setTypeusersale(request.getTypeusersale());
+            userRepository.save(post);
+            return post;
+        }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, userId));
+    }
+    @Override
+    public User updatePasswordUserCodified(Long userId, User request) {
+        return userRepository.findById(userId).map(post->{
+            post.setPassword(passwordEncoder.encode(request.getPassword()));
             userRepository.save(post);
             return post;
         }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, userId));
