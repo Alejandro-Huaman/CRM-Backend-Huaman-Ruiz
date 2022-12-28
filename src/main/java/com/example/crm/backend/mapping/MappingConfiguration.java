@@ -26,4 +26,9 @@ public class MappingConfiguration {
         return new UserMapper();
     }
 
+    @Bean
+    public ImageMapper imageMapper() {
+        return new ImageMapper();
+    }
+
 }

@@ -2,6 +2,7 @@ package com.example.crm.backend.service;
 
 import com.example.crm.backend.domain.userAggregate.model.entity.Image;
 import com.example.crm.backend.domain.userAggregate.persistence.ImageRepository;
+import com.example.crm.backend.domain.userAggregate.persistence.UserRepository;
 import com.example.crm.backend.domain.userAggregate.service.ImageService;
 import com.example.crm.shared.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class ImageServiceImpl implements ImageService {
 
     @Autowired
     private ImageRepository imageRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public List<Image> getAll() {
@@ -38,21 +42,27 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public Image createforuser(Long userId, Image image) {
-        return null;
+        return userRepository.findById(userId).map(user -> {
+            image.setUserid(user.getId());
+            return imageRepository.save(image);
+        }).orElseThrow(() -> new ResourceNotFoundException("User", userId));
     }
 
     @Override
     public List<Image> getImageByUserId(Long userId) {
-        return null;
+        return imageRepository.findByUserid(userId);
     }
 
     @Override
     public ResponseEntity<?> delete(Long ImageId) {
-        return null;
+        return imageRepository.findById(ImageId).map(Publication -> {
+            imageRepository.delete(Publication);
+            return ResponseEntity.ok().build();
+        }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, ImageId));
     }
 
     @Override
     public boolean exists(Long id) {
-        return false;
+        return imageRepository.existsById(id);
     }
 }
