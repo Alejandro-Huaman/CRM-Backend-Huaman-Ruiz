@@ -31,4 +31,9 @@ public class MappingConfiguration {
         return new ImageMapper();
     }
 
+    @Bean
+    public FileMapper fileMapper() {
+        return new FileMapper();
+    }
+
 }

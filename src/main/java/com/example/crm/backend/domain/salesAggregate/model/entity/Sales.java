@@ -60,6 +60,10 @@ public class Sales {
     @NotBlank
     private String typecoin;
 
+    @NotNull
+    @NotBlank
+    private String reference;
+
     @Enumerated(EnumType.STRING)
     private StatusName statusName;
 

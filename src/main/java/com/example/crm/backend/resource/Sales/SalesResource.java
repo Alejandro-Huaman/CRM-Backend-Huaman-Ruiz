@@ -35,4 +35,6 @@ public class SalesResource {
     private Date created_at;
 
     private String typecoin;
+
+    private String reference;
 }

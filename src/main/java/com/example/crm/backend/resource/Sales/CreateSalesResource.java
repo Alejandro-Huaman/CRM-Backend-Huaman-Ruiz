@@ -17,4 +17,6 @@ public class CreateSalesResource {
     private String amount;
 
     private String typecoin;
+
+    private String reference;
 }
