@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface FileService {
 
-    File uploadFileforUserId(Long userid,File file);
-    File getFileByUserId(Long userid);
+    File uploadFileforUserIdandSaleId(Long userid,Long saleid,File file);
+    File getFileByUserIdandSaleId(Long userid,Long saleid);
     ResponseEntity<?> deletefile(Long fileId);
 }

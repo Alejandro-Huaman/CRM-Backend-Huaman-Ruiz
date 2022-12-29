@@ -11,4 +11,6 @@ public class FileResource {
     private String filename;
 
     private Long userid;
+
+    private Long saleid;
 }

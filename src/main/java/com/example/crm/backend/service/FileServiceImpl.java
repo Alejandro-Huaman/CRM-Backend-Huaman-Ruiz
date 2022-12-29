@@ -1,7 +1,10 @@
 package com.example.crm.backend.service;
 
+import com.example.crm.backend.domain.salesAggregate.model.entity.Customer;
 import com.example.crm.backend.domain.salesAggregate.model.entity.File;
+import com.example.crm.backend.domain.salesAggregate.model.entity.Sales;
 import com.example.crm.backend.domain.salesAggregate.persistence.FileRepository;
+import com.example.crm.backend.domain.salesAggregate.persistence.SalesRepository;
 import com.example.crm.backend.domain.salesAggregate.service.FileService;
 import com.example.crm.backend.domain.userAggregate.persistence.UserRepository;
 import com.example.crm.shared.exception.ResourceNotFoundException;
@@ -20,19 +23,26 @@ public class FileServiceImpl implements FileService {
     private UserRepository userRepository;
 
     @Autowired
+    private SalesRepository saleRepository;
+
+    @Autowired
     private FileRepository fileRepository;
 
     @Override
-    public File uploadFileforUserId(Long userid, File file) {
+    public File uploadFileforUserIdandSaleId(Long userid,Long saleid, File file) {
+        Sales sale = saleRepository.findById(saleid)
+                .orElseThrow(() -> new ResourceNotFoundException("Sale", saleid));
+
         return userRepository.findById(userid).map(user -> {
            file.setUserid(user.getId());
+           file.setSaleid(sale.getId());
            return fileRepository.save(file);
         }).orElseThrow(() -> new ResourceNotFoundException("User", userid));
     }
 
     @Override
-    public File getFileByUserId(Long userid) {
-        return fileRepository.findByUserid(userid);
+    public File getFileByUserIdandSaleId(Long userid,Long saleid) {
+        return fileRepository.findByUseridAndSaleid(userid,saleid);
     }
 
     @Override

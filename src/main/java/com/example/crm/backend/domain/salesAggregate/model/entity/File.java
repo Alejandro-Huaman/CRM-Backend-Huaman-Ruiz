@@ -23,4 +23,6 @@ public class File {
     private String filename;
 
     private Long userid;
+
+    private Long saleid;
 }

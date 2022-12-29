@@ -36,11 +36,11 @@ public class FileController {
     @Autowired
     private FileMapper mapper;
 
-    public static final String DIRECTORY = System.getProperty("user.home") + "/Downloads/uploads/";
+    public static final String DIRECTORY = System.getProperty("user.dir");
 
-    @ApiOperation(value = "Upload file for User",notes = "Esta consulta consiste en cargar un archivo para un usuario segun su id")
-    @PostMapping("/upload/user/{userid}")
-    public ResponseEntity<FileResource> uploadFileforUserId(@RequestParam("files") MultipartFile multipartFile, @PathVariable Long userid) throws IOException{
+    @ApiOperation(value = "Upload file for User and Sale",notes = "Esta consulta consiste en cargar un archivo para un usuario y una venta segun sus ids")
+    @PostMapping("/upload/user/{userid}/sale/{saleid}")
+    public ResponseEntity<FileResource> uploadFileforUserIdandSaleId(@RequestParam("files") MultipartFile multipartFile, @PathVariable("userid") Long userid,@PathVariable("saleid") Long saleid) throws IOException{
 
         String filename = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         Path fileStorage = Paths.get(DIRECTORY,filename).toAbsolutePath().normalize();
@@ -49,7 +49,7 @@ public class FileController {
         File file = new File();
         file.setFilename(filename);
 
-        return ResponseEntity.ok().body(mapper.toResource(fileService.uploadFileforUserId(userid,file)));
+        return ResponseEntity.ok().body(mapper.toResource(fileService.uploadFileforUserIdandSaleId(userid,saleid,file)));
     }
 
     @ApiOperation(value = "Download file",notes = "Esta consulta consiste en descargar un archivo")
@@ -71,9 +71,16 @@ public class FileController {
 
     }
 
+    @ApiOperation(value = "Get file by User Id and Sale Id",notes = "Esta consulta consiste en obtener un archivo segun el id del usuario y la venta")
+    @GetMapping("/user/{userid}/sale/{saleid}")
+    public ResponseEntity<FileResource> getFileByUserIdandSaleId(@PathVariable("userid") Long userid, @PathVariable("saleid") Long saleid){
+        return ResponseEntity.ok(mapper.toResource(fileService.getFileByUserIdandSaleId(userid,saleid)));
+    }
 
-
-
-
+    @ApiOperation(value = "Delete file by Id",notes = "Esta consulta consiste en eliminar un archivo segun su id")
+    @DeleteMapping("/{fileid}")
+    public ResponseEntity<?> delete(@PathVariable("fileid") Long fileid){
+        return fileService.deletefile(fileid);
+    }
 
 }
