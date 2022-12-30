@@ -9,6 +9,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -73,8 +75,8 @@ public class FileController {
 
     @ApiOperation(value = "Get file by User Id and Sale Id",notes = "Esta consulta consiste en obtener un archivo segun el id del usuario y la venta")
     @GetMapping("/user/{userid}/sale/{saleid}")
-    public ResponseEntity<FileResource> getFileByUserIdandSaleId(@PathVariable("userid") Long userid, @PathVariable("saleid") Long saleid){
-        return ResponseEntity.ok(mapper.toResource(fileService.getFileByUserIdandSaleId(userid,saleid)));
+    public ResponseEntity<Page<FileResource>> getFileByUserIdandSaleId(@PathVariable("userid") Long userid, @PathVariable("saleid") Long saleid, Pageable pageable){
+        return ResponseEntity.ok(mapper.modelListToPage(fileService.getFileByUserIdandSaleId(userid,saleid),pageable));
     }
 
     @ApiOperation(value = "Delete file by Id",notes = "Esta consulta consiste en eliminar un archivo segun su id")

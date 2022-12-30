@@ -10,6 +10,6 @@ import java.util.List;
 public interface FileService {
 
     File uploadFileforUserIdandSaleId(Long userid,Long saleid,File file);
-    File getFileByUserIdandSaleId(Long userid,Long saleid);
+    List<File> getFileByUserIdandSaleId(Long userid,Long saleid);
     ResponseEntity<?> deletefile(Long fileId);
 }

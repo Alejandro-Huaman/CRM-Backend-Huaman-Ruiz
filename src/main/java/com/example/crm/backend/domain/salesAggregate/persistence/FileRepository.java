@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface FileRepository extends JpaRepository<File,Long> {
 
-    File findByUseridAndSaleid(Long userid,Long saleid);
+    List<File> findByUseridAndSaleid(Long userid,Long saleid);
 
 }

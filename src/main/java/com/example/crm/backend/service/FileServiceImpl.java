@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class FileServiceImpl implements FileService {
@@ -41,7 +42,7 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public File getFileByUserIdandSaleId(Long userid,Long saleid) {
+    public List<File> getFileByUserIdandSaleId(Long userid, Long saleid) {
         return fileRepository.findByUseridAndSaleid(userid,saleid);
     }
 
